@@ -1,0 +1,22 @@
+h1 {
+    color: white;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 5px;
+}
+
+#header-gradient {
+    padding: 5px;
+    background-color: lightskyblue;
+    background-image:
+      linear-gradient(
+        to right, 
+        lightskyblue, #301934 
+      );
+}
+
+#search-button {
+    margin-top: 10px;
+}
