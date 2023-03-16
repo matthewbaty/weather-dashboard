@@ -21,6 +21,7 @@ $(function () {
         .then(data => {
             console.log(data);
             // update the page to show info
+            $('.city').text(`${data.name}`)
             $('.temp').text(`Temperature: ${data.main.temp}°F`);
             $('.wind').text(`Wind: ${data.wind.speed} MPH`);
             $('.humidity').text(`Humidity: ${data.main.humidity}%`);
