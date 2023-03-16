@@ -21,8 +21,8 @@ $(function () {
         .then(data => {
             console.log(data);
             // update the page to show info
-            $('.temp').text(`Temperature: ${data.main.temp} F`);
-            $('.wind').text(`Wind: ${data.wind.speed} mph`);
+            $('.temp').text(`Temperature: ${data.main.temp}°F`);
+            $('.wind').text(`Wind: ${data.wind.speed} MPH`);
             $('.humidity').text(`Humidity: ${data.main.humidity}%`);
         })
         .catch(error => console.error(error));
