@@ -24,10 +24,12 @@ $(function () {
                 var iconCode = data.weather[0].icon;
                 var iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
                 console.log(data);
+
                 //clear weather icon
                 $('.icon').empty();
                 // update the page to show info
                 $('.city').text(`${data.name}`);
+                $('.date').text(`${moment(data.dt * 1000).format("(MM/DD/YYYY)")}`);
                 $('.icon').append(`<img src="${iconUrl}" alt="Weather icon">`);
                 $('.temp').text(`Temperature: ${data.main.temp}°F`);
                 $('.wind').text(`Wind: ${data.wind.speed} MPH`);
@@ -63,7 +65,7 @@ $(function () {
                             const cardBody = $(`<div class="card-body"></div>`);
                             const cardTitle = $(`<h5 class="card-title">${moment(dayData.dt_txt).format("MM/DD/YYYY")}</h5>`);
                             const cardIcon = $(`<img src="https://openweathermap.org/img/w/${dayData.weather[0].icon}.png" alt="Weather icon">`);
-                            const cardTemp = $(`<p class="card-text">Temperature: ${dayData.main.temp}&deg;F</p>`);
+                            const cardTemp = $(`<p class="card-text">Temp: ${dayData.main.temp}&deg;F</p>`);
                             const cardWind = $(`<p class="card-test">Wind: ${dayData.wind.speed} MPH</p>`);
                             const cardHumidity = $(`<p class="card-text">Humidity: ${dayData.main.humidity}%</p>`);
 

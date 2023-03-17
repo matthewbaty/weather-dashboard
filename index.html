@@ -19,7 +19,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <aside id="search-section" class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div id="search-section" class="col-lg-3 col-md-4 col-sm-6 col-12">
                 <h2>Search for a City:</h2>
                 <form class="form-inline">
                     <div class="form-group">
@@ -27,9 +27,11 @@
                     </div>
                     <button type="submit" class="btn btn-primary col-12" id="search-button">Search</button>
                 </form>
-            </aside>
+            </div>
             <div class="col border border-dark" id="current-weather">
-                <h2>Current Weather: <div class="city" style="display: inline-block"></div>
+                <h2>
+                    <div class="city" style="display: inline-block"></div>
+                    <div class="date" style="display: inline-block"></div>
                     <div class="icon" style="display: inline-block"></div>
                 </h2>
                 <div class="temp"></div>
@@ -37,12 +39,15 @@
                 <div class="humidity"></div>
             </div>
         </div>
-        <div class="row" id="5-day-forecast">
-            <h2>5-Day Forecast:</h2>
-            <div class="row" id="forecast">
+        <div class="row">
+            <div id="search-results-section" class="col-lg-3 col-md-4 col-sm-6 col-12">
+                <ul id="search-history"></ul>
+            </div>
+            <div class="col" id="forecast-section">
+                <h3>5-Day Forecast:</h3>
+                <div class="row" id="forecast">
             </div>
         </div>
-    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./assets/js/script.js"></script>
