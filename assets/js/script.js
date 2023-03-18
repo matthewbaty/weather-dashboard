@@ -1,13 +1,17 @@
 // jquery
 $(function () {
-    // define variables for API endpoint and API key
+
+    // prevent local storage from clearing
+    var searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+
+    // define variables for API URL and API key
     var apiUrl = "https://api.openweathermap.org/data/2.5/";
     var apiKey = "87f4db31ceb8c0cd0e7db8203ba43945";
 
     // search input and search button
     var searchInput = $("#search-input");
     var searchButton = $("#search-button");
-
+    var searchHistory = $("#search-history");
 
     $('form').submit(function (event) {
         // validation
@@ -82,8 +86,46 @@ $(function () {
         // get the searched city from the input field
         var city = $('.form-control').val();
 
+        // save the city to local storage
+        var searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+        searchHistory.push(city);
+        localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+
         // add city to search history 
         var listItem = $('<li class="btn btn-primary col-12" id="results-btns" style="margin-bottom: 10px;">').text(city);
         $('#search-history').append(listItem);
+        
+        var searchButton = $("#search-button");
+
+        // add event listener to button
+        searchButton.addEventListener('click', (event) => {
+            // stores search form text in var
+            var city = searchForm.value;
+        });
+
+        function addHistory(city) {
+            // adds city name search history if not already listed
+            if (!cityHistory.includes(currentCity)) {
+                cityHistory.push(currentCity);
+                localStorage.setItem('city', JSON.stringify(cityHistory));
+                displayHistory();
+            };
+        };
+        addHistory();
+
+        // display search history
+        function displayHistory() {
+            searchHistory.innerHTML = '';
+            for (let i = 0; i < city.length; i++) {
+                var historyBtn = document.createElement('button');
+                var listItem = $('<li class="btn btn-primary col-12" id="results-btns" style="margin-bottom: 10px;">').text(city);
+                $('#search-history').append(listItem);
+                historyBtn.textContent = city[i];
+                searchResults.appendChild(historyBtn);
+                // event handler for search history buttons
+                historyBtn.addEventListener('click', (event) => submit(city[i]));
+            };
+        };
+        displayHistory();
     });
 });

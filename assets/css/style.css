@@ -24,6 +24,7 @@ h2 {
 #current-weather {
     margin-top: 10px;
     margin-right: 100px;
+    width: auto;
 }
 
 .card {
