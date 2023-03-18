@@ -79,5 +79,11 @@ $(function () {
                     })
                     .catch(error => console.error(error));
             });
+        // get the searched city from the input field
+        var city = $('.form-control').val();
+
+        // add city to search history 
+        var listItem = $('<li class="btn btn-primary col-12" id="results-btns" style="margin-bottom: 10px;">').text(city);
+        $('#search-history').append(listItem);
     });
 });
