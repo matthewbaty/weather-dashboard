@@ -45,7 +45,7 @@ h2 {
     margin-bottom: 5px;
 }
 
-#results-btns {
+.search-history-btn {
     background-color: #DEDEDE;
     color: black;
     border-color: #DEDEDE;
