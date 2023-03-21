@@ -1,73 +1,3 @@
-// // jquery
-// $(function () {
-
-//     // prevent local storage from clearing
-//     var searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
-
-//     // define variables for API URL and API key
-//     var apiUrl = "https://api.openweathermap.org/data/2.5/";
-//     var apiKey = "87f4db31ceb8c0cd0e7db8203ba43945";
-
-//     // search input and search button
-//     var searchInput = $("input");
-//     var searchButton = $("#search-button");
-//     var searchHistoryList = $("#search-history");
-//     var searchResultsContainer = $("#search-results");
-
-//     $('form').submit(function (event) {
-//         // validation
-//         event.preventDefault();
-
-//         // get the user input 
-//         var city = $('input').val().trim();
-
-//         // use the weather API to get the weather data
-//         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=87f4db31ceb8c0cd0e7db8203ba43945&units=imperial`)
-//             .then(response => response.json())
-//             .then(data => {
-//                 // weather icon vars
-//                 var iconCode = data.weather[0].icon;
-//                 var iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
-
-//                 //clear weather icon
-//                 $('.icon').empty();
-//                 // update the page to show info
-//                 $('.city').text(`${data.name}`);
-//                 $('.date').text(`${moment(data.dt * 1000).format("(MM/DD/YYYY)")}`);
-//                 $('.icon').append(`<img src="${iconUrl}" alt="Weather icon">`);
-//                 $('.temp').text(`Temperature: ${data.main.temp}°F`);
-//                 $('.wind').text(`Wind: ${data.wind.speed} MPH`);
-//                 $('.humidity').text(`Humidity: ${data.main.humidity}%`);
-
-//                 //only display search history if city hasn't been searched yet
-//                 if (!searchHistory.includes(city)) {
-//                     searchHistory.push(city);
-//                     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
-//                     // update the search history list
-//                     var li = $("<li>").addClass("list-group-item").text(city);
-//                     searchHistoryList.append(li);
-//                 }
-
-//                 //clear results
-//                 searchResultsContainer.empty();
-
-//                 // add city to search history 
-//                 var searchResultItem = $('<li class="btn btn-primary col-12" id="results-btns" style="margin-bottom: 10px;">').text(city);
-//                 searchResultsContainer.append(searchResultItem);
-
-//                 // define search results
-//                 var searchResultItem = $("#results-btns");
-
-//                 // add event listener to button
-//                 searchResultItem.click(function () {
-//                     $('input').val(city);
-//                     $('form').submit();
-//                 });
-//             })
-
-//             .catch(error => console.error(error));
-
-// start of test
 // jquery
 $(function () {
 
@@ -78,12 +8,7 @@ $(function () {
     var apiUrl = "https://api.openweathermap.org/data/2.5/";
     var apiKey = "87f4db31ceb8c0cd0e7db8203ba43945";
 
-    // search input and search button
-    var searchInput = $("input");
-    var searchButton = $("#search-button");
-    // var searchHistoryResults = $("#search-history");
     var searchResultsContainer = $("#search-results");
-
 
     // function to add a new button to the search history list
     function addSearchHistoryButton(city) {
@@ -100,10 +25,10 @@ $(function () {
         }
     }
     
-    // // add buttons for each city in the search history
-    // for (var i = 0; i < searchHistory.length; i++) {
-    //     addSearchHistoryButton(searchHistory[i]);
-    // }
+    // add buttons for each city in the search history
+    for (var i = 0; i < searchHistory.length; i++) {
+        addSearchHistoryButton(searchHistory[i]);
+    }
 
 
     $('form').submit(function (event) {
@@ -130,14 +55,6 @@ $(function () {
                 $('.temp').text(`Temperature: ${data.main.temp}°F`);
                 $('.wind').text(`Wind: ${data.wind.speed} MPH`);
                 $('.humidity').text(`Humidity: ${data.main.humidity}%`);
-
-                // //only display search history if city hasn't been searched yet
-                // if (!searchHistory.includes(city)) {
-                //     searchHistory.push(city);
-                //     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
-                //     // add a new button to the search history list
-                //     addSearchHistoryButton(city);
-                // }
             })
             .catch(error => console.error(error));
 
@@ -190,7 +107,7 @@ $(function () {
         localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
         
         // calls button function to create button
-        addSearchHistoryButton(city)();
+        addSearchHistoryButton(city);
 
     });
 });

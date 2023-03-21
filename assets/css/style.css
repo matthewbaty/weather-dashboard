@@ -50,3 +50,19 @@ h2 {
     color: black;
     border-color: #DEDEDE;
 }
+
+#search-section {
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    #forecast-section {
+        margin: 5px;
+        margin-right: 25px;
+    }
+
+    #current-weather {
+        margin: 12px;
+        margin-bottom: 15px;
+    }
+}
